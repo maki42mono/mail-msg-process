@@ -1,0 +1,20 @@
+{
+    "name": "maksim-pukh/mail-msg-process",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maksim Pukh",
+            "email": "packagist@makimono.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload": {
+         "psr-4": {
+            "MaksimPukh\\MailMsgProcess\\": "src/"
+        }
+    }
+}
