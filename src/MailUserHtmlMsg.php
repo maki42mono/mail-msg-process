@@ -11,7 +11,7 @@ class MailUserHtmlMsg extends MailMsgProcess
 
         $form_data = $this->form_data;
         $bonus_track = function () use ($form_data) {
-            $form_class = new ReflectionClass(get_class($form_data));
+            $form_class = new \ReflectionClass(get_class($form_data));
             if ($form_class->hasMethod("getBonusTrack")) {
                 return $form_data->getBonusTrack();
             }
