@@ -9,7 +9,7 @@ abstract class MailMsgProcess
 
     abstract public function getHtmlMsg(): string;
 
-    public function __construct(CActiveRecord $form_data) {
+    public function __construct($form_data) {
         $this->form_data = $form_data;
         foreach ($form_data->getParseAttributes() as $attribute) {
             $this->named_form_attributes[$form_data->attributeLabels()[$attribute]] = $form_data->$attribute;
@@ -31,7 +31,6 @@ abstract class MailMsgProcess
         return $plain_text_msg;
     }
 
-//    хз, не безопасно
     public function setAttribute($name, $value): void {
         $this->named_form_attributes[$name] = $value;
     }
