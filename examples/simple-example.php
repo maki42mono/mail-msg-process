@@ -32,5 +32,10 @@ $load_source = function ($classname) {
 \spl_autoload_register($load_tests);
 
 $test = new TestModel();
-print_r($test->test());
-$html_admin_msg = new MailAdminHtmlMsg();
+$test->email = "test@makimono.ru";
+$test->name = "Константин";
+$test->surname = "Константинопольский";
+$test->timestamp = date('Y-m-d');
+//var_dump($test);
+$html_admin_msg = new MailAdminHtmlMsg($test);
+print_r($html_admin_msg->getHtmlMsg());
