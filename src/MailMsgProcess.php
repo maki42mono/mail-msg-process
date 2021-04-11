@@ -19,6 +19,12 @@ abstract class MailMsgProcess
     public function send(MailSender $mailer): bool {
         $mailer->text = $this->getHtmlMsg();
         $mailer->plain_text = $this->getPlainTextMsg();
+        try {
+            $mailer->validate();
+        }
+        catch (MailHtmlTextException | MailToEmailException | MailFromNameException | MailFromEmailException | MailSubjectException $e) {
+            throw $e;
+        }
         return $mailer->sendEmail();
     }
 
