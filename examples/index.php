@@ -7,7 +7,7 @@ use Examples\Examples;
 $load_tests = function ($classname) {
     $rule = '/[A-Za-z]+$/i';
     preg_match($rule, $classname, $matches);
-    $filename = __DIR__ . "./". $matches[0] .".php";
+    $filename = __DIR__ . "./helpers/". $matches[0] .".php";
     $path = str_replace('/', DIRECTORY_SEPARATOR, $filename);
 
     if (file_exists($path)) {
