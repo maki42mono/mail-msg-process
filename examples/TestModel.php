@@ -14,12 +14,33 @@ class TestModel implements MailMsgModel, MailCombineAdminParts
     public $surname;
     public $timestamp;
 
-    public function test()
+    public function getAdminHtmlBodyHeader(): string
     {
-        return "test!";
+        return "<b>Привет!</b><br>\r\n
+Я <i>есть</i> письмо…<br>";
     }
 
-    public function getParseAttributes()
+    public function getAdminSubject(): string
+    {
+        return "Тема письма";
+    }
+
+    public static function getAdminFromEmail(): string
+    {
+        return "happyadmin@makimono.ru";
+    }
+
+    public static function getAdminFromName(): string
+    {
+        return "Священный Максим";
+    }
+
+    public static function getAdminToEmail(): string
+    {
+        return "happynotify@makimono.ru";
+    }
+
+    public function getParseAttributes(): array
     {
         return [
             'email',

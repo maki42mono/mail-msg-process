@@ -6,6 +6,7 @@ abstract class MailMsgProcess
 {
     protected $form_data;
     protected $named_form_attributes = [];
+    protected $named_admin_footer_attributes = [];
 
     abstract public function getHtmlMsg(): string;
 
@@ -13,6 +14,10 @@ abstract class MailMsgProcess
         $this->form_data = $form_data;
         foreach ($form_data->getParseAttributes() as $attribute) {
             $this->named_form_attributes[$form_data->attributeLabels()[$attribute]] = $form_data->$attribute;
+        }
+
+        foreach (self::getAdminFooterAttributes() as $attribute) {
+            $this->named_admin_footer_attributes[$form_data->attributeLabels()[$attribute]] = $form_data->$attribute;
         }
     }
 
@@ -39,5 +44,11 @@ abstract class MailMsgProcess
 
     public function setAttribute($name, $value): void {
         $this->named_form_attributes[$name] = $value;
+    }
+
+    //    todo: добавить тут проверку на неустановленность
+    private static function getAdminFooterAttributes(): array {
+        $mail_msg_config = MailMsgConfig::getInstance();
+        return $mail_msg_config->getProperty("admin_footer_attributes");
     }
 }

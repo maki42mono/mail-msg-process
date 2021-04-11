@@ -31,11 +31,17 @@ $load_source = function ($classname) {
 \spl_autoload_register($load_source);
 \spl_autoload_register($load_tests);
 
+$mail_msg_config = MailMsgConfig::getInstance();
+$mail_msg_config->setProperty("admin_footer_attributes", ["timestamp"]);
+
+
 $test = new TestModel();
 $test->email = "test@makimono.ru";
 $test->name = "Константин";
 $test->surname = "Константинопольский";
 $test->timestamp = date('Y-m-d');
-//var_dump($test);
+
 $html_admin_msg = new MailAdminHtmlMsg($test);
 print_r($html_admin_msg->getHtmlMsg());
+echo "\r\n";
+echo($html_admin_msg->getPlainTextMsg());
