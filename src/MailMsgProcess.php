@@ -9,7 +9,7 @@ abstract class MailMsgProcess
 
     abstract public function getHtmlMsg(): string;
 
-    public function __construct($form_data) {
+    public function __construct(MailMsgModel $form_data) {
         $this->form_data = $form_data;
         foreach ($form_data->getParseAttributes() as $attribute) {
             $this->named_form_attributes[$form_data->attributeLabels()[$attribute]] = $form_data->$attribute;
